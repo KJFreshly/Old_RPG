@@ -1,0 +1,44 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class spellSlash : MonoBehaviour
+{
+
+    public int damage;
+    public float range;
+
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        Attack();
+    }
+
+    void Attack()
+    {
+        if (Input.GetButtonDown("Spell 01"))
+        {
+            if (PlayerStats.targetStats.gameObject.tag == "Enemy")
+            {
+                if (Vector2.Distance(PlayerStats.targetTransform.position, transform.position) < range)
+                {
+                    PlayerStats.targetStats.GetComponent<EnemyStats>().GetHit(damage);
+                }
+                else
+                {
+                    Debug.Log("Out of Range");
+                }
+            }
+            else
+            {
+                Debug.Log("Invalid Target");
+            }
+        }
+    }
+}
