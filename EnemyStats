@@ -1,0 +1,35 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnemyStats : MonoBehaviour
+{
+
+    public string enemyName;
+    public int health;
+
+	// Use this for initialization
+	void Start ()
+    {
+		
+	}
+	
+	// Update is called once per frame
+	void Update ()
+    {
+		
+	}
+
+    public void GetHit(int incDamage)
+    {
+        health -= incDamage;
+        Debug.Log(health);
+    }
+
+    private void OnMouseDown()
+    {
+        PlayerStats.targetTransform = transform;
+        PlayerStats.targetStats = this;
+        Debug.Log("Targetting: " + enemyName);
+    }
+}
